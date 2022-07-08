@@ -143,7 +143,7 @@
     <h1>Example Normative Optional Clause Heading</h1>
     <p>Example clause contents.</p>
   </emu-clause>
-  <p>A conforming implementation of ECMAScript must implement <dfn>Legacy</dfn> subclauses, unless they are also marked as Normative Optional. All of the language features and behaviours specified within Legacy subclauses have one or more undesirable characteristics. However, their continued usage in existing applications prevents their removal from this specification. These features are not considered part of the core ECMAScript language. Programmers should not use or assume the existence of these features and behaviours when writing new ECMAScript code.</p>
+  <p>A conforming implementation of ECMAScript must implement <dfn>Legacy</dfn> subclauses, unless they are also marked as Normative Optional. All of the language features and behaviours specified within Legacy subclauses have one or more undesirable characteristics. However, their continued usage in existing applications prevents their removal from this specification. These features are not considered part of the core ECMAScript language. Programmers should not use or assume the existence of these features and behaviours when writing new ECMAScript programs.</p>
 
   <emu-clause id="sec-conformance-legacy" example legacy>
     <h1>Example Legacy Clause Heading</h1>
@@ -206,7 +206,7 @@
   <emu-clause id="sec-ecmascript-overview">
     <h1>ECMAScript Overview</h1>
     <p>The following is an informal overview of ECMAScript&mdash;not all parts of the language are described. This overview is not part of the standard proper.</p>
-    <p>ECMAScript is object-based: basic language and host facilities are provided by objects, and an ECMAScript program is a cluster of communicating objects. In ECMAScript, an <em>object</em> is a collection of zero or more <em>properties</em> each with <em>attributes</em> that determine how each property can be used&mdash;for example, when the Writable attribute for a property is set to *false*, any attempt by executed ECMAScript code to assign a different value to the property fails. Properties are containers that hold other objects, <em>primitive values</em>, or <em>functions</em>. A primitive value is a member of one of the following built-in types: <b>Undefined</b>, <b>Null</b>, <b>Boolean</b>, <b>Number</b>, <b>BigInt</b>, <b>String</b>, and <b>Symbol;</b> an object is a member of the built-in type <b>Object</b>; and a function is a callable object. A function that is associated with an object via a property is called a <em>method</em>.</p>
+    <p>ECMAScript is object-based: basic language and host facilities are provided by objects, and an ECMAScript program is a cluster of communicating objects. In ECMAScript, an <em>object</em> is a collection of zero or more <em>properties</em> each with <em>attributes</em> that determine how each property can be used&mdash;for example, when the Writable attribute for a property is set to *false*, any attempt by an ECMAScript program to assign a different value to the property fails. Properties are containers that hold other objects, <em>primitive values</em>, or <em>functions</em>. A primitive value is a member of one of the following built-in types: <b>Undefined</b>, <b>Null</b>, <b>Boolean</b>, <b>Number</b>, <b>BigInt</b>, <b>String</b>, and <b>Symbol;</b> an object is a member of the built-in type <b>Object</b>; and a function is a callable object. A function that is associated with an object via a property is called a <em>method</em>.</p>
     <p>ECMAScript defines a collection of <em>built-in objects</em> that round out the definition of ECMAScript entities. These built-in objects include the global object; objects that are fundamental to the runtime semantics of the language including `Object`, `Function`, `Boolean`, `Symbol`, and various `Error` objects; objects that represent and manipulate numeric values including `Math`, `Number`, and `Date`; the text processing objects `String` and `RegExp`; objects that are indexed collections of values including `Array` and nine different kinds of Typed Arrays whose elements all have a specific numeric data representation; keyed collections including `Map` and `Set` objects; objects supporting structured data including the `JSON` object, `ArrayBuffer`, `SharedArrayBuffer`, and `DataView`; objects supporting control abstractions including generator functions and `Promise` objects; and reflection objects including `Proxy` and `Reflect`.</p>
     <p>ECMAScript also defines a set of built-in <em>operators</em>. ECMAScript operators include various unary operations, multiplicative operators, additive operators, bitwise shift operators, relational operators, equality operators, binary bitwise operators, binary logical operators, assignment operators, and the comma operator.</p>
     <p>Large ECMAScript programs are supported by <em>modules</em> which allow a program to be divided into multiple sequences of statements and declarations. Each module explicitly identifies declarations it uses that need to be provided by other modules and which of its declarations are available for use by other modules.</p>
@@ -1029,8 +1029,8 @@
 
     <emu-clause id="sec-value-notation">
       <h1>Value Notation</h1>
-      <p>In this specification, ECMAScript language values are displayed in *bold*. Examples include *null*, *true*, or *"hello"*. These are distinguished from longer ECMAScript code sequences such as `Function.prototype.apply` or `let n = 42;`.</p>
-      <p>Values which are internal to the specification and not directly observable from ECMAScript code are indicated with a ~sans-serif~ typeface. For instance, a Completion Record's [[Type]] field takes on values like ~normal~, ~return~, or ~throw~.</p>
+      <p>In this specification, ECMAScript language values are displayed in *bold*. Examples include *null*, *true*, or *"hello"*. These are distinguished from ECMAScript source text sequences such as `Function.prototype.apply` or `let n = 42;`.</p>
+      <p>Values which are internal to the specification and not directly observable from ECMAScript programs are indicated with a ~sans-serif~ typeface. For instance, a Completion Record's [[Type]] field takes on values like ~normal~, ~return~, or ~throw~.</p>
     </emu-clause>
   </emu-clause>
 </emu-clause>
@@ -1749,7 +1749,7 @@
 
       <emu-clause id="sec-ecmascript-language-types-number-type">
         <h1>The Number Type</h1>
-        <p>The Number type has exactly 18,437,736,874,454,810,627 (that is, <emu-eqn>2<sup>64</sup> - 2<sup>53</sup> + 3</emu-eqn>) values, representing the double-precision 64-bit format IEEE 754-2019 values as specified in the IEEE Standard for Binary Floating-Point Arithmetic, except that the 9,007,199,254,740,990 (that is, <emu-eqn>2<sup>53</sup> - 2</emu-eqn>) distinct &ldquo;Not-a-Number&rdquo; values of the IEEE Standard are represented in ECMAScript as a single special *NaN* value. (Note that the *NaN* value is produced by the program expression `NaN`.) In some implementations, external code might be able to detect a difference between various Not-a-Number values, but such behaviour is implementation-defined; to ECMAScript code, all *NaN* values are indistinguishable from each other.</p>
+        <p>The Number type has exactly 18,437,736,874,454,810,627 (that is, <emu-eqn>2<sup>64</sup> - 2<sup>53</sup> + 3</emu-eqn>) values, representing the double-precision 64-bit format IEEE 754-2019 values as specified in the IEEE Standard for Binary Floating-Point Arithmetic, except that the 9,007,199,254,740,990 (that is, <emu-eqn>2<sup>53</sup> - 2</emu-eqn>) distinct &ldquo;Not-a-Number&rdquo; values of the IEEE Standard are represented in ECMAScript as a single special *NaN* value. (Note that the *NaN* value is produced by the program expression `NaN`.) In some implementations, external code might be able to detect a difference between various Not-a-Number values, but such behaviour is implementation-defined; to ECMAScript programs, all *NaN* values are indistinguishable from each other.</p>
         <emu-note>
           <p>The bit pattern that might be observed in an ArrayBuffer (see <emu-xref href="#sec-arraybuffer-objects"></emu-xref>) or a SharedArrayBuffer (see <emu-xref href="#sec-sharedarraybuffer-objects"></emu-xref>) after a Number value has been stored into it is not necessarily the same as the internal representation of that Number value used by the ECMAScript implementation.</p>
         </emu-note>
@@ -2682,7 +2682,7 @@
                 *false*
               </td>
               <td>
-                If *false*, attempts by ECMAScript code to change the property's [[Value]] attribute using [[Set]] will not succeed.
+                If *false*, attempts by an ECMAScript program to change the property's [[Value]] attribute using [[Set]] will not succeed.
               </td>
             </tr>
             <tr>
@@ -2764,7 +2764,7 @@
         <p>Internal slots correspond to internal state that is associated with objects and used by various ECMAScript specification algorithms. Internal slots are not object properties and they are not inherited. Depending upon the specific internal slot specification, such state may consist of values of any ECMAScript language type or of specific ECMAScript specification type values. Unless explicitly specified otherwise, internal slots are allocated as part of the process of creating an object and may not be dynamically added to an object. Unless specified otherwise, the initial value of an internal slot is the value *undefined*. Various algorithms within this specification create objects that have internal slots. However, the ECMAScript language provides no direct way to associate internal slots with an object.</p>
         <p>All objects have an internal slot named [[PrivateElements]], which is a List of PrivateElements. This List represents the values of the private fields, methods, and accessors for the object. Initially, it is an empty List.</p>
         <p>Internal methods and internal slots are identified within this specification using names enclosed in double square brackets [[ ]].</p>
-        <p><emu-xref href="#table-essential-internal-methods"></emu-xref> summarizes the <em>essential internal methods</em> used by this specification that are applicable to all objects created or manipulated by ECMAScript code. Every object must have algorithms for all of the essential internal methods. However, all objects do not necessarily use the same algorithms for those methods.</p>
+        <p><emu-xref href="#table-essential-internal-methods"></emu-xref> summarizes the <em>essential internal methods</em> used by this specification that are applicable to all objects created or manipulated by an ECMAScript program. Every object must have algorithms for all of the essential internal methods. However, all objects do not necessarily use the same algorithms for those methods.</p>
         <p>An <dfn id="ordinary-object" variants="ordinary objects">ordinary object</dfn> is an object that satisfies all of the following criteria:</p>
         <ul>
           <li>
@@ -2962,7 +2962,7 @@
       <emu-clause id="sec-invariants-of-the-essential-internal-methods">
         <h1>Invariants of the Essential Internal Methods</h1>
         <p>The Internal Methods of Objects of an ECMAScript engine must conform to the list of invariants specified below. Ordinary ECMAScript Objects as well as all standard exotic objects in this specification maintain these invariants. ECMAScript Proxy objects maintain these invariants by means of runtime checks on the result of traps invoked on the [[ProxyHandler]] object.</p>
-        <p>Any implementation provided exotic objects must also maintain these invariants for those objects. Violation of these invariants may cause ECMAScript code to have unpredictable behaviour and create security issues. However, violation of these invariants must never compromise the memory safety of an implementation.</p>
+        <p>Any implementation provided exotic objects must also maintain these invariants for those objects. Violation of these invariants may cause an ECMAScript program to have unpredictable behaviour and create security issues. However, violation of these invariants must never compromise the memory safety of an implementation.</p>
         <p>An implementation must not allow these invariants to be circumvented in any manner such as by providing alternative interfaces that implement the functionality of the essential internal methods without enforcing their invariants.</p>
         <h2>Definitions:</h2>
         <ul>
@@ -7190,7 +7190,7 @@
         1. Return the Iterator Record { [[Iterator]]: _iterator_, [[NextMethod]]: %GeneratorFunction.prototype.prototype.next%, [[Done]]: *false* }.
       </emu-alg>
       <emu-note>
-        <p>The list iterator object is never directly accessible to ECMAScript code.</p>
+        <p>The list iterator object is never directly accessible to ECMAScript programs.</p>
       </emu-note>
     </emu-clause>
 
@@ -10033,7 +10033,7 @@
               <p>An <em>object Environment Record</em> is used to define the effect of ECMAScript elements such as |WithStatement| that associate identifier bindings with the properties of some object.</p>
             </li>
             <li>
-              <p>A <em>global Environment Record</em> is used for |Script| global declarations. It does not have an outer environment; its [[OuterEnv]] is *null*. It may be prepopulated with identifier bindings and it includes an associated global object whose properties provide some of the global environment's identifier bindings. As ECMAScript code is executed, additional properties may be added to the global object and the initial properties may be modified.</p>
+              <p>A <em>global Environment Record</em> is used for |Script| global declarations. It does not have an outer environment; its [[OuterEnv]] is *null*. It may be prepopulated with identifier bindings and it includes an associated global object whose properties provide some of the global environment's identifier bindings. As an ECMAScript program executes, additional properties may be added to the global object and the initial properties may be modified.</p>
             </li>
           </ul>
         </li>
@@ -11600,7 +11600,7 @@
 
   <emu-clause id="sec-code-realms">
     <h1>Realms</h1>
-    <p>Before it is evaluated, all ECMAScript code must be associated with a <dfn id="realm" variants="realms">realm</dfn>. Conceptually, a realm consists of a set of intrinsic objects, an ECMAScript global environment, all of the ECMAScript code that is loaded within the scope of that global environment, and other associated state and resources.</p>
+    <p>Before it is evaluated, an ECMAScript program must be associated with a <dfn id="realm" variants="realms">realm</dfn>. Conceptually, a realm consists of a set of intrinsic objects, an ECMAScript global environment, all of the ECMAScript code that is loaded within the scope of that global environment, and other associated state and resources.</p>
     <p>A realm is represented in this specification as a <dfn id="realm-record" variants="Realm Records">Realm Record</dfn> with the fields specified in <emu-xref href="#table-realm-record-fields"></emu-xref>:</p>
     <emu-table id="table-realm-record-fields" caption="Realm Record Fields" oldids="table-21">
       <table>
@@ -11797,7 +11797,7 @@
     </emu-table>
     <p>Evaluation of code by the running execution context may be suspended at various points defined within this specification. Once the running execution context has been suspended a different execution context may become the running execution context and commence evaluating its code. At some later time a suspended execution context may again become the running execution context and continue evaluating its code at the point where it had previously been suspended. Transition of the running execution context status among execution contexts usually occurs in stack-like last-in/first-out manner. However, some ECMAScript features require non-LIFO transitions of the running execution context.</p>
     <p>The value of the Realm component of the running execution context is also called <dfn id="current-realm">the current Realm Record</dfn>. The value of the Function component of the running execution context is also called the <dfn id="active-function-object">active function object</dfn>.</p>
-    <p>Execution contexts for ECMAScript code have the additional state components listed in <emu-xref href="#table-additional-state-components-for-ecmascript-code-execution-contexts"></emu-xref>.</p>
+    <p>ECMAScript code execution contexts have the additional state components listed in <emu-xref href="#table-additional-state-components-for-ecmascript-code-execution-contexts"></emu-xref>.</p>
     <emu-table id="table-additional-state-components-for-ecmascript-code-execution-contexts" caption="Additional State Components for ECMAScript Code Execution Contexts" oldids="table-23">
       <table>
         <tr>
@@ -11857,7 +11857,7 @@
       </table>
     </emu-table>
     <p>In most situations only the running execution context (the top of the execution context stack) is directly manipulated by algorithms within this specification. Hence when the terms &ldquo;LexicalEnvironment&rdquo;, and &ldquo;VariableEnvironment&rdquo; are used without qualification they are in reference to those components of the running execution context.</p>
-    <p>An execution context is purely a specification mechanism and need not correspond to any particular artefact of an ECMAScript implementation. It is impossible for ECMAScript code to directly access or observe an execution context.</p>
+    <p>An execution context is purely a specification mechanism and need not correspond to any particular artefact of an ECMAScript implementation. It is impossible for an ECMAScript program to directly access or observe an execution context.</p>
 
     <emu-clause id="sec-getactivescriptormodule" type="abstract operation">
       <h1>GetActiveScriptOrModule ( ): a Script Record, a Module Record, or *null*</h1>
@@ -12108,7 +12108,7 @@
       </ul>
 
       <emu-note>
-        <p>The _realm_ for Jobs returned by NewPromiseResolveThenableJob is usually the result of calling GetFunctionRealm on the _then_ function object. The _realm_ for Jobs returned by NewPromiseReactionJob is usually the result of calling GetFunctionRealm on the handler if the handler is not *undefined*. If the handler is *undefined*, _realm_ is *null*. For both kinds of Jobs, when GetFunctionRealm completes abnormally (i.e. called on a revoked Proxy), _realm_ is the current Realm at the time of the GetFunctionRealm call. When the _realm_ is *null*, no user ECMAScript code will be evaluated and no new ECMAScript objects (e.g. Error objects) will be created. The WHATWG HTML specification (<a href="https://html.spec.whatwg.org/">https://html.spec.whatwg.org/</a>), for example, uses _realm_ to check for the ability to run script and for the <a href="https://html.spec.whatwg.org/#entry">entry</a> concept.</p>
+        <p>The _realm_ for Jobs returned by NewPromiseResolveThenableJob is usually the result of calling GetFunctionRealm on the _then_ function object. The _realm_ for Jobs returned by NewPromiseReactionJob is usually the result of calling GetFunctionRealm on the handler if the handler is not *undefined*. If the handler is *undefined*, _realm_ is *null*. For both kinds of Jobs, when GetFunctionRealm completes abnormally (i.e. called on a revoked Proxy), _realm_ is the current Realm at the time of the GetFunctionRealm call. When the _realm_ is *null*, no ECMAScript code will be evaluated and no new ECMAScript objects (e.g. Error objects) will be created. The WHATWG HTML specification (<a href="https://html.spec.whatwg.org/">https://html.spec.whatwg.org/</a>), for example, uses _realm_ to check for the ability to run script and for the <a href="https://html.spec.whatwg.org/#entry">entry</a> concept.</p>
       </emu-note>
     </emu-clause>
   </emu-clause>
@@ -14285,7 +14285,7 @@
         <p>The integer-indexed data properties of an arguments exotic object whose numeric name values are less than the number of formal parameters of the corresponding function object initially share their values with the corresponding argument bindings in the function's execution context. This means that changing the property changes the corresponding value of the argument binding and vice-versa. This correspondence is broken if such a property is deleted and then redefined or if the property is changed into an accessor property. If the arguments object is an ordinary object, the values of its properties are simply a copy of the arguments passed to the function and there is no dynamic linkage between the property values and the formal parameter values.</p>
       </emu-note>
       <emu-note>
-        <p>The ParameterMap object and its property values are used as a device for specifying the arguments object correspondence to argument bindings. The ParameterMap object and the objects that are the values of its properties are not directly observable from ECMAScript code. An ECMAScript implementation does not need to actually create or use such objects to implement the specified semantics.</p>
+        <p>The ParameterMap object and its property values are used as a device for specifying the arguments object correspondence to argument bindings. The ParameterMap object and the objects that are the values of its properties are not directly observable from ECMAScript programs. An ECMAScript implementation does not need to actually create or use such objects to implement the specified semantics.</p>
       </emu-note>
       <emu-note>
         <p>Ordinary arguments objects define a non-configurable accessor property named *"callee"* which throws a *TypeError* exception on access. The *"callee"* property has a more specific meaning for arguments exotic objects, which are created only for some class of non-strict functions. The definition of this property in the ordinary variant exists to ensure that it is not defined in any other manner by conforming ECMAScript implementations.</p>
@@ -14502,7 +14502,7 @@
             1. Let _getterClosure_ be a new Abstract Closure with no parameters that captures _name_ and _env_ and performs the following steps when called:
               1. Return _env_.GetBindingValue(_name_, *false*).
             1. Let _getter_ be CreateBuiltinFunction(_getterClosure_, 0, *""*, &laquo; &raquo;).
-            1. NOTE: _getter_ is never directly accessible to ECMAScript code.
+            1. NOTE: _getter_ is never directly accessible to ECMAScript programs.
             1. Return _getter_.
           </emu-alg>
         </emu-clause>
@@ -14522,7 +14522,7 @@
             1. Let _setterClosure_ be a new Abstract Closure with parameters (_value_) that captures _name_ and _env_ and performs the following steps when called:
               1. Return ! _env_.SetMutableBinding(_name_, _value_, *false*).
             1. Let _setter_ be CreateBuiltinFunction(_setterClosure_, 1, *""*, &laquo; &raquo;).
-            1. NOTE: _setter_ is never directly accessible to ECMAScript code.
+            1. NOTE: _setter_ is never directly accessible to ECMAScript programs.
             1. Return _setter_.
           </emu-alg>
         </emu-clause>
@@ -15801,7 +15801,7 @@
       SourceCharacter ::
         &gt; any Unicode code point
     </emu-grammar>
-    <p>ECMAScript code is expressed using Unicode. ECMAScript source text is a sequence of code points. All Unicode code point values from U+0000 to U+10FFFF, including surrogate code points, may occur in source text where permitted by the ECMAScript grammars. The actual encodings used to store and interchange ECMAScript source text is not relevant to this specification. Regardless of the external source text encoding, a conforming ECMAScript implementation processes the source text as if it was an equivalent sequence of |SourceCharacter| values, each |SourceCharacter| being a Unicode code point. Conforming ECMAScript implementations are not required to perform any normalization of source text, or behave as though they were performing normalization of source text.</p>
+    <p>ECMAScript is denoted using Unicode. <dfn>ECMAScript source text</dfn> is a sequence of code points. All Unicode code point values from U+0000 to U+10FFFF, including surrogate code points, may occur in ECMAScript source text where permitted by the ECMAScript grammars. The actual encodings used to store and interchange ECMAScript source text is not relevant to this specification. Regardless of the external source text encoding, a conforming ECMAScript implementation processes the source text as if it was an equivalent sequence of |SourceCharacter| values, each |SourceCharacter| being a Unicode code point. Conforming ECMAScript implementations are not required to perform any normalization of source text, or behave as though they were performing normalization of source text.</p>
     <p>The components of a combining character sequence are treated as individual Unicode code points even though a user might think of the whole sequence as a single character.</p>
     <emu-note>
       <p>In string literals, regular expression literals, template literals and identifiers, any Unicode code point may also be expressed using Unicode escape sequences that explicitly express a code point's numeric value. Within a comment, such an escape sequence is effectively ignored as part of the comment.</p>
@@ -15936,16 +15936,16 @@
 
   <emu-clause id="sec-types-of-source-code">
     <h1>Types of Source Code</h1>
-    <p>There are four types of ECMAScript code:</p>
+    <p>There are four types of <dfn>ECMAScript code</dfn>:</p>
     <ul>
       <li>
-        <em>Global code</em> is source text that is treated as an ECMAScript |Script|. The global code of a particular |Script| does not include any source text that is parsed as part of a |FunctionDeclaration|, |FunctionExpression|, |GeneratorDeclaration|, |GeneratorExpression|, |AsyncFunctionDeclaration|, |AsyncFunctionExpression|, |AsyncGeneratorDeclaration|, |AsyncGeneratorExpression|, |MethodDefinition|, |ArrowFunction|, |AsyncArrowFunction|, |ClassDeclaration|, or |ClassExpression|.
+        <dfn>Global code</dfn> is source text that is treated as an ECMAScript |Script|. The global code of a particular |Script| does not include any source text that is parsed as part of a |FunctionDeclaration|, |FunctionExpression|, |GeneratorDeclaration|, |GeneratorExpression|, |AsyncFunctionDeclaration|, |AsyncFunctionExpression|, |AsyncGeneratorDeclaration|, |AsyncGeneratorExpression|, |MethodDefinition|, |ArrowFunction|, |AsyncArrowFunction|, |ClassDeclaration|, or |ClassExpression|.
       </li>
       <li>
-        <em>Eval code</em> is the source text supplied to the built-in `eval` function. More precisely, if the parameter to the built-in `eval` function is a String, it is treated as an ECMAScript |Script|. The eval code for a particular invocation of `eval` is the global code portion of that |Script|.
+        <dfn>Eval code</dfn> is the source text supplied to the built-in `eval` function. More precisely, if the parameter to the built-in `eval` function is a String, it is treated as an ECMAScript |Script|. The eval code for a particular invocation of `eval` is the global code portion of that |Script|.
       </li>
       <li>
-        <p><em>Function code</em> is source text that is parsed to supply the value of the [[ECMAScriptCode]] and [[FormalParameters]] internal slots (see <emu-xref href="#sec-ecmascript-function-objects"></emu-xref>) of an ECMAScript function object. The function code of a particular ECMAScript function does not include any source text that is parsed as the function code of a nested |FunctionDeclaration|, |FunctionExpression|, |GeneratorDeclaration|, |GeneratorExpression|, |AsyncFunctionDeclaration|, |AsyncFunctionExpression|, |AsyncGeneratorDeclaration|, |AsyncGeneratorExpression|, |MethodDefinition|, |ArrowFunction|, |AsyncArrowFunction|, |ClassDeclaration|, or |ClassExpression|.</p>
+        <p><dfn>Function code</dfn> is source text that is parsed to supply the value of the [[ECMAScriptCode]] and [[FormalParameters]] internal slots (see <emu-xref href="#sec-ecmascript-function-objects"></emu-xref>) of an ECMAScript function object. The function code of a particular ECMAScript function does not include any source text that is parsed as the function code of a nested |FunctionDeclaration|, |FunctionExpression|, |GeneratorDeclaration|, |GeneratorExpression|, |AsyncFunctionDeclaration|, |AsyncFunctionExpression|, |AsyncGeneratorDeclaration|, |AsyncGeneratorExpression|, |MethodDefinition|, |ArrowFunction|, |AsyncArrowFunction|, |ClassDeclaration|, or |ClassExpression|.</p>
         <p>In addition, if the source text referred to above is parsed as:</p>
         <ul>
           <li>the |FormalParameters| and |FunctionBody| of a |FunctionDeclaration| or |FunctionExpression|,</li>
@@ -15956,7 +15956,7 @@
         <p>then the source text matched by the |BindingIdentifier| (if any) of that declaration or expression is also included in the function code of the corresponding function.</p>
       </li>
       <li>
-        <em>Module code</em> is source text that is code that is provided as a |ModuleBody|. It is the code that is directly evaluated when a module is initialized. The module code of a particular module does not include any source text that is parsed as part of a nested |FunctionDeclaration|, |FunctionExpression|, |GeneratorDeclaration|, |GeneratorExpression|, |AsyncFunctionDeclaration|, |AsyncFunctionExpression|, |AsyncGeneratorDeclaration|, |AsyncGeneratorExpression|, |MethodDefinition|, |ArrowFunction|, |AsyncArrowFunction|, |ClassDeclaration|, or |ClassExpression|.
+        <dfn>Module code</dfn> is source text that is code that is provided as a |ModuleBody|. It is the code that is directly evaluated when a module is initialized. The module code of a particular module does not include any source text that is parsed as part of a nested |FunctionDeclaration|, |FunctionExpression|, |GeneratorDeclaration|, |GeneratorExpression|, |AsyncFunctionDeclaration|, |AsyncFunctionExpression|, |AsyncGeneratorDeclaration|, |AsyncGeneratorExpression|, |MethodDefinition|, |ArrowFunction|, |AsyncArrowFunction|, |ClassDeclaration|, or |ClassExpression|.
       </li>
     </ul>
     <emu-note>
@@ -16004,7 +16004,7 @@
 
     <emu-clause id="sec-non-ecmascript-functions">
       <h1>Non-ECMAScript Functions</h1>
-      <p>An ECMAScript implementation may support the evaluation of function exotic objects whose evaluative behaviour is expressed in some host-defined form of executable code other than via ECMAScript code. Whether a function object is an ECMAScript code function or a non-ECMAScript function is not semantically observable from the perspective of an ECMAScript code function that calls or is called by such a non-ECMAScript function.</p>
+      <p>An ECMAScript implementation may support the evaluation of function exotic objects whose evaluative behaviour is expressed in some host-defined form of executable code other than ECMAScript source text. Whether a function object is defined within ECMAScript code or is a built-in function is not observable from the perspective of ECMAScript code that calls or is called by such a function object.</p>
     </emu-clause>
   </emu-clause>
 </emu-clause>
@@ -18636,7 +18636,7 @@
           <p>The creation of a template object cannot result in an abrupt completion.</p>
         </emu-note>
         <emu-note>
-          <p>Each |TemplateLiteral| in the program code of a realm is associated with a unique template object that is used in the evaluation of tagged Templates (<emu-xref href="#sec-template-literals-runtime-semantics-evaluation"></emu-xref>). The template objects are frozen and the same template object is used each time a specific tagged Template is evaluated. Whether template objects are created lazily upon first evaluation of the |TemplateLiteral| or eagerly prior to first evaluation is an implementation choice that is not observable to ECMAScript code.</p>
+          <p>Each |TemplateLiteral| in the program code of a realm is associated with a unique template object that is used in the evaluation of tagged Templates (<emu-xref href="#sec-template-literals-runtime-semantics-evaluation"></emu-xref>). The template objects are frozen and the same template object is used each time a specific tagged Template is evaluated. Whether template objects are created lazily upon first evaluation of the |TemplateLiteral| or eagerly prior to first evaluation is an implementation choice that is not observable to an ECMAScript program.</p>
         </emu-note>
         <emu-note>
           <p>Future editions of this specification may define additional non-enumerable properties of template objects.</p>
@@ -19466,7 +19466,7 @@
             <dd>It allows hosts to perform any extraordinary operations to prepare the object returned from `import.meta`.</dd>
           </dl>
 
-          <p>Most hosts will be able to simply define HostGetImportMetaProperties, and leave HostFinalizeImportMeta with its default behaviour. However, HostFinalizeImportMeta provides an "escape hatch" for hosts which need to directly manipulate the object before it is exposed to ECMAScript code.</p>
+          <p>Most hosts will be able to simply define HostGetImportMetaProperties, and leave HostFinalizeImportMeta with its default behaviour. However, HostFinalizeImportMeta provides an "escape hatch" for hosts which need to directly manipulate the object before it is exposed to an ECMAScript program.</p>
 
           <p>An implementation of HostFinalizeImportMeta must conform to the following requirements:</p>
           <ul>
@@ -22164,7 +22164,7 @@
         <dl class="header">
         </dl>
         <emu-alg>
-          1. Return an Iterator object (<emu-xref href="#sec-iterator-interface"></emu-xref>) whose `next` method iterates over all the String-valued keys of enumerable properties of _O_. The iterator object is never directly accessible to ECMAScript code. The mechanics and order of enumerating the properties is not specified but must conform to the rules specified below.
+          1. Return an Iterator object (<emu-xref href="#sec-iterator-interface"></emu-xref>) whose `next` method iterates over all the String-valued keys of enumerable properties of _O_. The iterator object is never directly accessible to an ECMAScript program. The mechanics and order of enumerating the properties is not specified but must conform to the rules specified below.
         </emu-alg>
         <p>The iterator's `throw` and `return` methods are *null* and are never invoked. The iterator's `next` method processes object properties to determine whether the property key should be returned as an iterator value. Returned property keys do not include keys that are Symbols. Properties of the target object may be deleted during enumeration. A property that is deleted before it is processed by the iterator's `next` method is ignored. If new properties are added to the target object during enumeration, the newly added properties are not guaranteed to be processed in the active enumeration. A property name will be returned by the iterator's `next` method at most once in any enumeration.</p>
         <p>Enumerating the properties of the target object includes enumerating properties of its prototype, and the prototype of the prototype, and so on, recursively; but a property of a prototype is not processed if it has the same name as a property that has already been processed by the iterator's `next` method. The values of [[Enumerable]] attributes are not considered when determining if a property of a prototype object has already been processed. The enumerable property names of prototype objects must be obtained by invoking EnumerateObjectProperties passing the prototype object as the argument. EnumerateObjectProperties must obtain the own property keys of the target object by calling its [[OwnPropertyKeys]] internal method. Property attributes of the target object must be obtained by calling its [[GetOwnProperty]] internal method.</p>
@@ -22205,7 +22205,7 @@
 
       <emu-clause id="sec-for-in-iterator-objects">
         <h1>For-In Iterator Objects</h1>
-        <p>A For-In Iterator is an object that represents a specific iteration over some specific object. For-In Iterator objects are never directly accessible to ECMAScript code; they exist solely to illustrate the behaviour of EnumerateObjectProperties.</p>
+        <p>A For-In Iterator is an object that represents a specific iteration over some specific object. For-In Iterator objects are never directly accessible to an ECMAScript program; they exist solely to illustrate the behaviour of EnumerateObjectProperties.</p>
 
         <emu-clause id="sec-createforiniterator" type="abstract operation">
           <h1>
@@ -22234,7 +22234,7 @@
             <li>has properties that are inherited by all For-In Iterator Objects.</li>
             <li>is an ordinary object.</li>
             <li>has a [[Prototype]] internal slot whose value is %IteratorPrototype%.</li>
-            <li>is never directly accessible to ECMAScript code.</li>
+            <li>is never directly accessible to an ECMAScript program.</li>
             <li>has the following properties:</li>
           </ul>
 
@@ -22438,7 +22438,7 @@
   <emu-clause id="sec-with-statement" legacy>
     <h1>The `with` Statement</h1>
     <emu-note>
-      <p>Use of the Legacy `with` statement is discouraged in new ECMAScript code. Consider alternatives that are permitted in both strict mode code and non-strict code, such as <emu-xref href="#sec-destructuring-assignment">destructuring assignment</emu-xref>.</p>
+      <p>Use of the Legacy `with` statement is discouraged in new ECMAScript programs. Consider alternatives that are permitted in both strict mode code and non-strict code, such as <emu-xref href="#sec-destructuring-assignment">destructuring assignment</emu-xref>.</p>
     </emu-note>
 
     <h2>Syntax</h2>
@@ -24668,7 +24668,7 @@
         1. Return the ClassFieldDefinition Record { [[Name]]: _name_, [[Initializer]]: _initializer_ }.
       </emu-alg>
       <emu-note>
-        The function created for _initializer_ is never directly accessible to ECMAScript code.
+        The function created for _initializer_ is never directly accessible to an ECMAScript program.
       </emu-note>
     </emu-clause>
 
@@ -24690,7 +24690,7 @@
         1. Perform MakeMethod(_bodyFunction_, _homeObject_).
         1. Return the ClassStaticBlockDefinition Record { [[BodyFunction]]: _bodyFunction_ }.
       </emu-alg>
-      <emu-note>The function _bodyFunction_ is never directly accessible to ECMAScript code.</emu-note>
+      <emu-note>The function _bodyFunction_ is never directly accessible to an ECMAScript program.</emu-note>
     </emu-clause>
 
     <emu-clause id="sec-runtime-semantics-evaluateclassstaticblockbody" type="sdo">
@@ -27088,7 +27088,7 @@
                 an Object
               </td>
               <td>
-                An object exposed through the `import.meta` meta property. It is ~empty~ until it is accessed by ECMAScript code.
+                An object exposed through the `import.meta` meta property. It is ~empty~ until it is accessed by an ECMAScript program.
               </td>
             </tr>
             <tr>
@@ -28701,7 +28701,7 @@
         </h1>
         <dl class="header">
           <dt>description</dt>
-          <dd>It allows host environments to block certain ECMAScript functions which allow developers to compile strings into ECMAScript code.</dd>
+          <dd>It allows host environments to block certain ECMAScript functions which allow developers to interpret strings as ECMAScript code.</dd>
         </dl>
         <p>An implementation of HostEnsureCanCompileStrings must conform to the following requirements:</p>
         <ul>
@@ -28836,7 +28836,7 @@
         1. Otherwise, return *false*.
       </emu-alg>
       <emu-note>
-        <p>A reliable way for ECMAScript code to test if a value `X` is a *NaN* is an expression of the form `X !== X`. The result will be *true* if and only if `X` is a *NaN*.</p>
+        <p>A reliable way for an ECMAScript program to test if a value `X` is a *NaN* is an expression of the form `X !== X`. The result will be *true* if and only if `X` is a *NaN*.</p>
       </emu-note>
     </emu-clause>
 
@@ -29477,7 +29477,7 @@
           1. Return ? AddEntriesFromIterable(_obj_, _iterable_, _adder_).
         </emu-alg>
         <emu-note>
-          The function created for _adder_ is never directly accessible to ECMAScript code.
+          The function created for _adder_ is never directly accessible to an ECMAScript program.
         </emu-note>
       </emu-clause>
 
@@ -30025,7 +30025,7 @@
         <li>has a *"name"* property whose value is the empty String.</li>
       </ul>
       <emu-note>
-        <p>The Function prototype object is specified to be a function object to ensure compatibility with ECMAScript code that was created prior to the ECMAScript 2015 specification.</p>
+        <p>The Function prototype object is specified to be a function object to ensure compatibility with ECMAScript programs that were created prior to the ECMAScript 2015 specification.</p>
       </emu-note>
 
       <emu-clause id="sec-function.prototype.apply">
@@ -30162,7 +30162,7 @@
 
       <emu-clause id="sec-function-instances-name">
         <h1>name</h1>
-        <p>The value of the *"name"* property is a String that is descriptive of the function. The name has no semantic significance but is typically a variable or property name that is used to refer to the function at its point of definition in ECMAScript code. This property has the attributes { [[Writable]]: *false*, [[Enumerable]]: *false*, [[Configurable]]: *true* }.</p>
+        <p>The value of the *"name"* property is a String that is descriptive of the function. The name has no semantic significance but is typically a variable or property name that is used to refer to the function at its point of definition in ECMAScript source text. This property has the attributes { [[Writable]]: *false*, [[Enumerable]]: *false*, [[Configurable]]: *true* }.</p>
         <p>Anonymous functions objects that do not have a contextual name associated with them by this specification use the empty String as the value of the *"name"* property.</p>
       </emu-clause>
 
@@ -30337,7 +30337,7 @@
           1. Append the Record { [[Key]]: _stringKey_, [[Symbol]]: _newSymbol_ } to the GlobalSymbolRegistry List.
           1. Return _newSymbol_.
         </emu-alg>
-        <p>The GlobalSymbolRegistry is a List that is globally available. It is shared by all realms. Prior to the evaluation of any ECMAScript code it is initialized as a new empty List. Elements of the GlobalSymbolRegistry are Records with the structure defined in <emu-xref href="#table-globalsymbolregistry-record-fields"></emu-xref>.</p>
+        <p>The GlobalSymbolRegistry is a List that is globally available. It is shared by all realms. Prior to the evaluation of any ECMAScript code, it is initialized as a new empty List. Elements of the GlobalSymbolRegistry are Records with the structure defined in <emu-xref href="#table-globalsymbolregistry-record-fields"></emu-xref>.</p>
         <emu-table id="table-globalsymbolregistry-record-fields" caption="GlobalSymbolRegistry Record Fields" oldids="table-44">
           <table>
             <tr>
@@ -37091,7 +37091,7 @@ THH:mm:ss.sss
         <li>has a [[Prototype]] internal slot whose value is %Object.prototype%.</li>
       </ul>
       <emu-note>
-        <p>The Array prototype object is specified to be an Array exotic object to ensure compatibility with ECMAScript code that was created prior to the ECMAScript 2015 specification.</p>
+        <p>The Array prototype object is specified to be an Array exotic object to ensure compatibility with ECMAScript programs that were created prior to the ECMAScript 2015 specification.</p>
       </emu-note>
 
       <emu-clause id="sec-array.prototype.at">
@@ -43238,8 +43238,8 @@ THH:mm:ss.sss
         <li>is an ordinary object.</li>
       </ul>
       <emu-note>
-        <p>All objects defined in this specification that implement the Iterator interface also inherit from %IteratorPrototype%. ECMAScript code may also define objects that inherit from %IteratorPrototype%. The %IteratorPrototype% object provides a place where additional methods that are applicable to all iterator objects may be added.</p>
-        <p>The following expression is one way that ECMAScript code can access the %IteratorPrototype% object:</p>
+        <p>All objects defined in this specification that implement the Iterator interface also inherit from %IteratorPrototype%. An ECMAScript program may also define objects that inherit from %IteratorPrototype%. The %IteratorPrototype% object provides a place where additional methods that are applicable to all iterator objects may be added.</p>
+        <p>The following expression is one way that an ECMAScript program can access the %IteratorPrototype% object:</p>
         <pre><code class="javascript">Object.getPrototypeOf(Object.getPrototypeOf([][Symbol.iterator]()))</code></pre>
       </emu-note>
 
@@ -43261,7 +43261,7 @@ THH:mm:ss.sss
         <li>is an ordinary object.</li>
       </ul>
       <emu-note>
-        <p>All objects defined in this specification that implement the AsyncIterator interface also inherit from %AsyncIteratorPrototype%. ECMAScript code may also define objects that inherit from %AsyncIteratorPrototype%. The %AsyncIteratorPrototype% object provides a place where additional methods that are applicable to all async iterator objects may be added.</p>
+        <p>All objects defined in this specification that implement the AsyncIterator interface also inherit from %AsyncIteratorPrototype%. An ECMAScript program may also define objects that inherit from %AsyncIteratorPrototype%. The %AsyncIteratorPrototype% object provides a place where additional methods that are applicable to all async iterator objects may be added.</p>
       </emu-note>
 
       <emu-clause id="sec-asynciteratorprototype-asynciterator">
@@ -43378,7 +43378,7 @@ THH:mm:ss.sss
 
       <emu-clause id="sec-properties-of-async-from-sync-iterator-instances">
         <h1>Properties of Async-from-Sync Iterator Instances</h1>
-        <p>Async-from-Sync Iterator instances are ordinary objects that inherit properties from the %AsyncFromSyncIteratorPrototype% intrinsic object. Async-from-Sync Iterator instances are initially created with the internal slots listed in <emu-xref href="#table-async-from-sync-iterator-internal-slots"></emu-xref>. Async-from-Sync Iterator instances are not directly observable from ECMAScript code.</p>
+        <p>Async-from-Sync Iterator instances are ordinary objects that inherit properties from the %AsyncFromSyncIteratorPrototype% intrinsic object. Async-from-Sync Iterator instances are initially created with the internal slots listed in <emu-xref href="#table-async-from-sync-iterator-internal-slots"></emu-xref>. Async-from-Sync Iterator instances are not directly observable from ECMAScript programs.</p>
         <emu-table id="table-async-from-sync-iterator-internal-slots" caption="Internal Slots of Async-from-Sync Iterator Instances">
           <table>
             <thead>
@@ -46985,7 +46985,7 @@ THH:mm:ss.sss
   <p>The ECMAScript language syntax and semantics defined in this annex are required when the ECMAScript host is a web browser. The content of this annex is normative but optional if the ECMAScript host is not a web browser.</p>
   <emu-note>
     <p>This annex describes various legacy features and other characteristics of web browser ECMAScript hosts. All of the language features and behaviours specified in this annex have one or more undesirable characteristics and in the absence of legacy usage would be removed from this specification. However, the usage of these features by large numbers of existing web pages means that web browsers must continue to support them. The specifications in this annex define the requirements for interoperable implementations of these legacy features.</p>
-    <p>These features are not considered part of the core ECMAScript language. Programmers should not use or assume the existence of these features and behaviours when writing new ECMAScript code. ECMAScript implementations are discouraged from implementing these features unless the implementation is part of a web browser or is required to run the same legacy ECMAScript code that web browsers encounter.</p>
+    <p>These features are not considered part of the core ECMAScript language. Programmers should not use or assume the existence of these features and behaviours when creating new ECMAScript programs. ECMAScript implementations are discouraged from implementing these features unless the implementation is part of a web browser or is required to run the same legacy ECMAScript programs that web browsers encounter.</p>
   </emu-note>
 
   <emu-annex id="sec-additional-syntax">
@@ -47580,7 +47580,7 @@ THH:mm:ss.sss
       <emu-annex id="String.prototype.trimleft">
         <h1>String.prototype.trimLeft ( )</h1>
         <emu-note>
-          <p>The property *"trimStart"* is preferred. The *"trimLeft"* property is provided principally for compatibility with old code. It is recommended that the *"trimStart"* property be used in new ECMAScript code.</p>
+          <p>The property *"trimStart"* is preferred. The *"trimLeft"* property is provided principally for compatibility with old code. It is recommended that the *"trimStart"* property be used in new ECMAScript programs.</p>
         </emu-note>
         <p>The initial value of the *"trimLeft"* property is %String.prototype.trimStart%, defined in <emu-xref href="#sec-string.prototype.trimstart"></emu-xref>.</p>
       </emu-annex>
@@ -47588,7 +47588,7 @@ THH:mm:ss.sss
       <emu-annex id="String.prototype.trimright">
         <h1>String.prototype.trimRight ( )</h1>
         <emu-note>
-          <p>The property *"trimEnd"* is preferred. The *"trimRight"* property is provided principally for compatibility with old code. It is recommended that the *"trimEnd"* property be used in new ECMAScript code.</p>
+          <p>The property *"trimEnd"* is preferred. The *"trimRight"* property is provided principally for compatibility with old code. It is recommended that the *"trimEnd"* property be used in new ECMAScript programs.</p>
         </emu-note>
         <p>The initial value of the *"trimRight"* property is %String.prototype.trimEnd%, defined in <emu-xref href="#sec-string.prototype.trimend"></emu-xref>.</p>
       </emu-annex>
@@ -47686,7 +47686,7 @@ THH:mm:ss.sss
 
     <emu-annex id="sec-block-level-function-declarations-web-legacy-compatibility-semantics">
       <h1>Block-Level Function Declarations Web Legacy Compatibility Semantics</h1>
-      <p>Prior to ECMAScript 2015, the ECMAScript specification did not define the occurrence of a |FunctionDeclaration| as an element of a |Block| statement's |StatementList|. However, support for that form of |FunctionDeclaration| was an allowable extension and most browser-hosted ECMAScript implementations permitted them. Unfortunately, the semantics of such declarations differ among those implementations. Because of these semantic differences, existing web ECMAScript code that uses |Block| level function declarations is only portable among browser implementations if the usage only depends upon the semantic intersection of all of the browser implementations for such declarations. The following are the use cases that fall within that intersection semantics:</p>
+      <p>Prior to ECMAScript 2015, the ECMAScript specification did not define the occurrence of a |FunctionDeclaration| as an element of a |Block| statement's |StatementList|. However, support for that form of |FunctionDeclaration| was an allowable extension and most browser-hosted ECMAScript implementations permitted them. Unfortunately, the semantics of such declarations differ among those implementations. Because of these semantic differences, existing web ECMAScript source text that uses |Block| level function declarations is only portable among browser implementations if the usage only depends upon the semantic intersection of all of the browser implementations for such declarations. The following are the use cases that fall within that intersection semantics:</p>
       <ol>
         <li>
           <p>A function is declared and only referenced within a single block.</p>
@@ -47740,7 +47740,7 @@ THH:mm:ss.sss
           </ul>
         </li>
       </ol>
-      <p>The first use case is interoperable with the semantics of |Block| level function declarations provided by ECMAScript 2015. Any pre-existing ECMAScript code that employs that use case will operate using the Block level function declarations semantics defined by clauses <emu-xref href="#sec-ordinary-and-exotic-objects-behaviours"></emu-xref>, <emu-xref href="#sec-ecmascript-language-statements-and-declarations"></emu-xref>, and <emu-xref href="#sec-ecmascript-language-functions-and-classes"></emu-xref>.</p>
+      <p>The first use case is interoperable with the semantics of |Block| level function declarations provided by ECMAScript 2015. Any pre-existing ECMAScript source text that employs that use case will operate using the Block level function declarations semantics defined by clauses <emu-xref href="#sec-ordinary-and-exotic-objects-behaviours"></emu-xref>, <emu-xref href="#sec-ecmascript-language-statements-and-declarations"></emu-xref>, and <emu-xref href="#sec-ecmascript-language-functions-and-classes"></emu-xref>.</p>
       <p>ECMAScript 2015 interoperability for the second and third use cases requires the following extensions to the clause <emu-xref href="#sec-ordinary-and-exotic-objects-behaviours"></emu-xref>, clause <emu-xref href="#sec-ecmascript-language-functions-and-classes"></emu-xref>, clause <emu-xref href="#sec-eval-x"></emu-xref> and clause <emu-xref href="#sec-globaldeclarationinstantiation"></emu-xref> semantics.</p>
       <p>If an ECMAScript implementation has a mechanism for reporting diagnostic warning messages, a warning should be produced when code contains a |FunctionDeclaration| for which these compatibility semantics are applied and introduce observable differences from non-compatibility semantics. For example, if a var binding is not introduced because its introduction would create an early error, a warning message should not be produced.</p>
 
