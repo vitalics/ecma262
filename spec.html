@@ -11797,7 +11797,7 @@
     </emu-table>
     <p>Evaluation of code by the running execution context may be suspended at various points defined within this specification. Once the running execution context has been suspended a different execution context may become the running execution context and commence evaluating its code. At some later time a suspended execution context may again become the running execution context and continue evaluating its code at the point where it had previously been suspended. Transition of the running execution context status among execution contexts usually occurs in stack-like last-in/first-out manner. However, some ECMAScript features require non-LIFO transitions of the running execution context.</p>
     <p>The value of the Realm component of the running execution context is also called <dfn id="current-realm">the current Realm Record</dfn>. The value of the Function component of the running execution context is also called the <dfn id="active-function-object">active function object</dfn>.</p>
-    <p>ECMAScript code execution contexts have the additional state components listed in <emu-xref href="#table-additional-state-components-for-ecmascript-code-execution-contexts"></emu-xref>.</p>
+    <p><dfn variants="ECMAScript code execution context">ECMAScript code execution contexts</dfn> have the additional state components listed in <emu-xref href="#table-additional-state-components-for-ecmascript-code-execution-contexts"></emu-xref>.</p>
     <emu-table id="table-additional-state-components-for-ecmascript-code-execution-contexts" caption="Additional State Components for ECMAScript Code Execution Contexts" oldids="table-23">
       <table>
         <tr>
